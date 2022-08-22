@@ -57,5 +57,5 @@ data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":
 
 user_ids=user_id.split(",")
 for userid in user_ids:
-  res = wm.send_template(user_id, template_id, data)
+  res = wm.send_template(userid, template_id, data)
   print(res)
