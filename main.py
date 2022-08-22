@@ -22,7 +22,7 @@ template_id = os.environ["TEMPLATE_ID"]
 now_time = today.now()                                               
 week_day = today.isoweekday()                                        
 week = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天']             
-text_date = '今天是' + str(now_time)[0:10] + ',' + week[week_day - 1]   
+text_date = '今天是[' + str(now_time)[0:10] + ']' + week[week_day - 1]   
 
 
 def get_weather():
@@ -70,7 +70,7 @@ wm = WeChatMessage(client)
 res_city, wea, high, low, humidity, air_level, air_tips = get_weaher2() 
 data = {"air_tips": {"value": air_tips}, "air_level": {"value": air_level}, "text_date": {"value": text_date},         
         "humidity": {"value": humidity, "color": get_random_color()},                                                  
-        "city": {"value": res_city, "color": get_random_color()}, "weathr": {"value": wea},                            
+        "city": {"value": res_city, "color": get_random_color()}, "weathr": {"value": wea, "color": get_random_color()},                            
         "low": {"value": low, "color": get_random_color()}, "high": {"value": high, "color": get_random_color()},      
         "love_days": {"value": get_count()}, "birthday_left": {"value": get_birthday()},                               
         "words": {"value": get_words(), "color": get_random_color()}}                                                  
