@@ -68,11 +68,11 @@ wm = WeChatMessage(client)
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"yutian_days":{"value":get_yutian()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
 
 res_city, wea, high, low, humidity, air_level, air_tips = get_weaher2() 
-data = {"air_tips": {"value": air_tips}, "air_level": {"value": air_level}, "text_date": {"value": text_date},         
+data = {"air_tips": {"value": air_tips}, "air_level": {"value": air_level, "color": get_random_color()}, "text_date": {"value": text_date, "color": get_random_color()},         
         "humidity": {"value": humidity, "color": get_random_color()},                                                  
         "city": {"value": res_city, "color": get_random_color()}, "weather": {"value": wea, "color": get_random_color()},                            
         "low": {"value": low, "color": get_random_color()}, "high": {"value": high, "color": get_random_color()},      
-        "love_days": {"value": get_count()}, "birthday_left": {"value": get_birthday()},                               
+        "love_days": {"value": get_count(), "color": get_random_color()},"yutian_days":{"value":get_yutian(), "color": get_random_color()}, "birthday_left": {"value": get_birthday(), "color": get_random_color()},                               
         "words": {"value": get_words(), "color": get_random_color()}}                                                  
 
 user_ids=user_id.split(",")
