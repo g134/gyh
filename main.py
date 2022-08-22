@@ -70,7 +70,7 @@ wm = WeChatMessage(client)
 res_city, wea, high, low, humidity, air_level, air_tips = get_weaher2() 
 data = {"air_tips": {"value": air_tips}, "air_level": {"value": air_level}, "text_date": {"value": text_date},         
         "humidity": {"value": humidity, "color": get_random_color()},                                                  
-        "city": {"value": res_city, "color": get_random_color()}, "weathr": {"value": wea, "color": get_random_color()},                            
+        "city": {"value": res_city, "color": get_random_color()}, "weather": {"value": wea, "color": get_random_color()},                            
         "low": {"value": low, "color": get_random_color()}, "high": {"value": high, "color": get_random_color()},      
         "love_days": {"value": get_count()}, "birthday_left": {"value": get_birthday()},                               
         "words": {"value": get_words(), "color": get_random_color()}}                                                  
