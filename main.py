@@ -18,12 +18,17 @@ app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
+ll_key=os.environ["LL_KEY"]
 
 now_time = today.now()                                               
 week_day = today.isoweekday()                                        
 week = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天']             
-text_date = '今天是[' + str(now_time)[0:10] + ']' + week[week_day - 1]   
+ 
 
+def get_lunar():
+    url = "http://api.tianapi.com/lunar/index?key="+ll_key+"&date=" + str(now_time)[0:10]
+    res = requests.get(url).json()
+    return res['newslist'][0]['tiangandizhiyear'],res['newslist'][0]['shengxiao'],res['newslist'][0]['lubarmonth'],res['newslist'][0]['lunarday']
 
 def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
@@ -67,7 +72,9 @@ wm = WeChatMessage(client)
 # wea, temerature = get_weather()
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"yutian_days":{"value":get_yutian()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
 
-res_city, wea, high, low, humidity, air_level, air_tips = get_weaher2() 
+res_city, wea, high, low, humidity, air_level, air_tips = get_weaher2()
+tiangandizhiyear,shengxiao,lubarmonth,lunarday=get_lunar()
+text_date = '今天是 [' + str(now_time)[0:10] + '] ' + week[week_day - 1]+' '+tiangandizhiyear+'年 '+shengxiao+' 农历'+lubarmonth+lunarday
 data = {"air_tips": {"value": air_tips}, "air_level": {"value": air_level, "color": get_random_color()}, "text_date": {"value": text_date, "color": get_random_color()},         
         "humidity": {"value": humidity, "color": get_random_color()},                                                  
         "city": {"value": res_city, "color": get_random_color()}, "weather": {"value": wea, "color": get_random_color()},                            
