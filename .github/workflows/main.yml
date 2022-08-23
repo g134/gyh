@@ -31,3 +31,4 @@ jobs:
       BIRTHDAY: ${{ secrets.BIRTHDAY }}
       CITY: ${{ secrets.CITY }}
       YUTIANDAY: ${{ secrets.YUTIANDAY }}
+      LL_KEY: ${{ secrets.LL_KEY }}
